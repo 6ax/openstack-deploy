@@ -42,6 +42,7 @@ pipeline {
             }
             steps {
                 dir("${env.WORKSPACE}/infrastructure_proxmox/terraform"){
+                    // sh ('ls -ll') 
                     sh ('terraform init')
                     sh ('terraform apply -auto-approve')
                 }
