@@ -22,15 +22,15 @@ data "template_file" "user_data" {
   template = file("${path.module}/cloud-init-configs/coud-init-template.yml")
   vars = {
     pubkey   = var.cloud_init_ssh_public_key
-    hostname = each.value.name
-    fqdn     = "${each.value.name}.${var.domain_name}"
+    hostname = each.key
+    fqdn     = "${each.key}.${var.domain_name}"
   }
 
 }
 resource "local_file" "cloud_init_user_data_file" {
   for_each = var.nodes
   content  = data.template_file.user_data[each.key].rendered
-  filename = "${path.module}/cloud-init-configs/user_data_${each.value.name}.cfg"
+  filename = "${path.module}/cloud-init-configs/user_data_${each.key}.cfg"
 }
 
 resource "null_resource" "cloud_init_config_files" {
@@ -44,8 +44,8 @@ resource "null_resource" "cloud_init_config_files" {
 
   provisioner "file" {
     source      = local_file.cloud_init_user_data_file[each.key].filename
-    destination = "/var/lib/vz/snippets/user_data_vm-${each.value.name}.yml"
-    #destination = "/mnt/pve/storage-01/snippets/user_data_vm-${each.value.name}.yml"
+    destination = "/var/lib/vz/snippets/user_data_vm-${each.key}.yml"
+    #destination = "/mnt/pve/storage-01/snippets/user_data_vm-${each.key}.yml"
   }
 }
 
@@ -56,7 +56,7 @@ resource "proxmox_vm_qemu" "cloudinit-test" {
   depends_on = [
     null_resource.cloud_init_config_files,
   ]
-  name = each.value.name
+  name = each.key
   desc = each.value.description
   target_node = each.value.target_node
 
@@ -92,6 +92,6 @@ disk {
   os_type = "cloud-init"
   ipconfig0 = "ip=${each.value.ip0}/${each.value.netmask},gw=${each.value.gw}"
   ipconfig1 = "ip=${each.value.ip1}/${each.value.netmask}"
-  #cicustom = "user=storage-01:snippets/user_data_vm-${each.value.name}.yml"
-  cicustom = "user=local:snippets/user_data_vm-${each.value.name}.yml"
+  #cicustom = "user=storage-01:snippets/user_data_vm-${each.key}.yml"
+  cicustom = "user=local:snippets/user_data_vm-${each.key}.yml"
 }

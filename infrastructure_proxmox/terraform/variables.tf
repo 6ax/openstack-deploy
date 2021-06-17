@@ -11,8 +11,7 @@ variable "cloud_init_ssh_public_key" {}
 
 variable "nodes" {
     default = {
-        "K8s_master_01" = {
-            "name" = "opnstack-01",
+        "opnstack-01" = {
             "description" = "{ \"groups\": [\"opnstack\"] }",
             "target_node" = "node1",
             "ip0" = "192.168.0.45",
@@ -20,8 +19,7 @@ variable "nodes" {
             "netmask" = "24",
             "gw" = "192.168.0.254"
         },
-        "K8s_worker_01" = {
-            "name" = "opnstack-02",
+        "opnstack-02" = {
             "description" = "{ \"groups\": [\"opnstack\"] }",
             "target_node" = "node2",
             "ip0" = "192.168.0.46",
@@ -29,8 +27,7 @@ variable "nodes" {
             "netmask" = "24",
             "gw" = "192.168.0.254"
         },
-            "K8s_worker_02" = {
-            "name" = "opnstack-03",
+            "opnstack-03" = {
             "description" = "{ \"groups\": [\"opnstack\"] }",
             "target_node" = "node3",
             "ip0" = "192.168.0.47",
