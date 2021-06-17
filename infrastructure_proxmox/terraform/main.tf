@@ -85,6 +85,10 @@ disk {
     tag = "4"
   }
 
+ network {
+    model = "virtio"
+    bridge = "vmbr0"
+  }
   os_type = "cloud-init"
   ipconfig0 = "ip=${each.value.ip}/${each.value.netmask},gw=${each.value.gw}"
   #cicustom = "user=storage-01:snippets/user_data_vm-${each.value.name}.yml"
