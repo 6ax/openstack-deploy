@@ -57,24 +57,5 @@ pipeline {
                 sh('git push https://$GIT_USER:$GIT_USER_TOKEN@github.com/$GIT_USER/$GITHUB_REPO_NAME')
             }
         }
-        // stage ('Deploy Kubernetes cluster from Ansible playbook'){
-        //     environment { 
-        // // https://github.com/xezpeleta/Ansible-Proxmox-inventory
-        //         PROXMOX_URL = credentials('pm_url') 
-        //         PROXMOX_USERNAME = credentials('pm_user')
-        //         PROXMOX_PASSWORD = credentials('pm_password')
-        //         PROXMOX_INVALID_CERT = 'false'
-        //     }
-        //     steps {
-        //         dir("${env.WORKSPACE}/infrastructure_proxmox/ansible"){
-        //             sshagent(['cloud-init-ssh-user']) {
-        //                 sh ('ansible-playbook -i proxmox.py --limit="K8sMaster,K8sWorker" playbook.yml --tags "always" -e "ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3 ansible_ssh_extra_args=\'-o StrictHostKeyChecking=no\'"')
-        //                 sh ('ansible-playbook -i proxmox.py --limit="K8sMaster" playbook.yml --tags "K8sMaster" --skip-tags "always" -e "ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3 ansible_ssh_extra_args=\'-o StrictHostKeyChecking=no\'"')
-        //                 sh ('ansible-playbook -i proxmox.py --limit="K8sWorker" playbook.yml --tags "K8sWorker" --skip-tags "always" -e "ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3 ansible_ssh_extra_args=\'-o StrictHostKeyChecking=no\'"')
-        //                 // cleanWs()
-        //             }
-        //         }
-        //     }
-        // }
     }
 }
