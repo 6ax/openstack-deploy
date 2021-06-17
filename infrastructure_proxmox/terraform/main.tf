@@ -92,7 +92,8 @@ disk {
   }
   os_type = "cloud-init"
   ipconfig0 = "ip=${each.value.ip0}/${each.value.netmask},gw=${each.value.gw}"
-  ipconfig1 = "ip=${each.value.ip1}/${each.value.netmask}"
+  #ipconfig1 = "ip=${each.value.ip1}/${each.value.netmask}"
+  ipconfig1 = ""
   #cicustom = "user=storage-01:snippets/user_data_vm-${each.key}.yml"
   cicustom = "user=local:snippets/user_data_vm-${each.key}.yml"
 }
