@@ -16,6 +16,7 @@ variable "nodes" {
             "description" = "{ \"groups\": [\"opnstack\"] }",
             "target_node" = "node1",
             "ip" = "192.168.0.45",
+            "ip2" = "10.10.10.45",
             "netmask" = "24",
             "gw" = "192.168.0.254"
         },
@@ -24,14 +25,16 @@ variable "nodes" {
             "description" = "{ \"groups\": [\"opnstack\"] }",
             "target_node" = "node2",
             "ip" = "192.168.0.46",
+            "ip2" = "10.10.10.46",
             "netmask" = "24",
             "gw" = "192.168.0.254"
-        }
+        },
             "K8s_worker_02" = {
             "name" = "opnstack-03",
             "description" = "{ \"groups\": [\"opnstack\"] }",
             "target_node" = "node3",
             "ip" = "192.168.0.47",
+            "ip2" = "10.10.10.47",
             "netmask" = "24",
             "gw" = "192.168.0.254"
 
