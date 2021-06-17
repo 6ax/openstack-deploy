@@ -12,9 +12,6 @@ packages:
     - python3-minimal
     - qemu-guest-agent
 
-bootcmd:
-  - echo ${ip} ${fqdn} ${hostname} >> /etc/hosts
-
 runcmd:
   - [ systemctl, daemon-reload ]
   - [ systemctl, enable, qemu-guest-agent.service ]

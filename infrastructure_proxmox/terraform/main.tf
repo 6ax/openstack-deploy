@@ -24,7 +24,6 @@ data "template_file" "user_data" {
     pubkey   = var.cloud_init_ssh_public_key
     hostname = each.key
     fqdn     = "${each.key}.${var.domain_name}"
-    ip       = "${each.value.ip0}"
   }
 
 }
