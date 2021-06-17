@@ -4,13 +4,16 @@ ssh_authorized_keys:
 
 hostname: ${hostname}
 fqdn: ${fqdn}
-manage_etc_hosts: true
+manage_etc_hosts: false
 
 timezone: Europe/Moscow
 
 packages:
     - python3-minimal
     - qemu-guest-agent
+
+bootcmd:
+  - echo ${ip} ${fqdn} ${hostname} >> /etc/hosts
 
 runcmd:
   - [ systemctl, daemon-reload ]
