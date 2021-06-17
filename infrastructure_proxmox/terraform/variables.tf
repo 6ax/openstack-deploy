@@ -27,7 +27,7 @@ variable "nodes" {
             "netmask" = "24",
             "gw" = "192.168.0.254"
         },
-            "opnstack-03" = {
+        "opnstack-03" = {
             "description" = "{ \"groups\": [\"opnstack\"] }",
             "target_node" = "node3",
             "ip0" = "192.168.0.47",
