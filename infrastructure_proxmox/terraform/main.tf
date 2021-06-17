@@ -88,6 +88,7 @@ disk {
  network {
     model = "virtio"
     bridge = "vmbr0"
+    tag = "4"
   }
   os_type = "cloud-init"
   ipconfig0 = "ip=${each.value.ip0}/${each.value.netmask},gw=${each.value.gw}"
