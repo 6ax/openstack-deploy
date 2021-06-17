@@ -1,4 +1,3 @@
-# TF_VAR_pve_user="root" TF_VAR_pve_password="SInhrotel123" TF_VAR_pve_host="node3.synchrotel.ru"
 variable "pm_api_url" {}
 variable "pm_user" {}
 variable "pm_password" {}
@@ -34,7 +33,6 @@ variable "nodes" {
             "ip1" = "10.10.10.47",
             "netmask" = "24",
             "gw" = "192.168.0.254"
-
         }
     }
 }
