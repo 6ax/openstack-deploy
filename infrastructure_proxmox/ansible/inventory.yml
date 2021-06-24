@@ -1,14 +1,14 @@
 all:
     hosts:
         opnstack-01:
-            ansible_host: 192.168.0.45
+            ansible_host: 192.168.0.42
         opnstack-02:
-            ansible_host: 192.168.0.46
+            ansible_host: 192.168.0.43
         opnstack-03:
-            ansible_host: 192.168.0.47
+            ansible_host: 192.168.0.44
     vars:
         ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'        
         ansible_user: ubuntu 
         ansible_python_interpreter: /usr/bin/python3
         domain: example.com
-        
+ 
